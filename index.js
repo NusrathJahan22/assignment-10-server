@@ -40,7 +40,7 @@ dbConnect()
 
 const SliderData = client.db('carDB').collection('SliderData')
 const AddCart = client.db('carDB').collection('AddCart')
-const mycart =client.db('carDB').collection('mycart')
+const mycart = client.db('carDB').collection('mycart')
 // const User =client.db('carDB').collection('user')
 
 
@@ -138,6 +138,12 @@ app.get('/addcard', async (req, res) => {
   const cursor = mycart.find()
   const result = await cursor.toArray()
   res.send(result)
+})
+app.delete('/mycart/:id', async (req, res) => {
+  const id = req.params.id;
+  const query = { _id: new ObjectId(id) }
+  const result = await mycart.deleteOne(query);
+  res.send(result);
 })
 
 app.listen(port, () => {
