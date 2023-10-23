@@ -76,11 +76,7 @@ app.get('/cart', async (req, res) => {
   const result = await cursor.toArray();
   res.send(result)
 })
-// app.get('/cart', async (req, res) => {
-//   const cursor = MyCart.find();
-//   const result = await cursor.toArray();
-//   res.send(result)
-// })
+
 
 app.get('/cart/:id', async (req, res) => {
   const id = req.params.id
@@ -89,12 +85,7 @@ app.get('/cart/:id', async (req, res) => {
   res.send(result)
 })
 
-// app.get('/cart/:id', async (req, res) => {
-//   const id = req.params.id
-//   const query = { _id: new ObjectId(id) }
-//   const result = await AddCart.findOne(query)
-//   res.send(result)
-// })
+
 
 
 app.put('/cart/:id', async (req, res) => {
