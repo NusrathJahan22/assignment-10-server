@@ -41,7 +41,7 @@ dbConnect()
 const SliderData = client.db('carDB').collection('SliderData')
 const AddCart = client.db('carDB').collection('AddCart')
 const mycart = client.db('carDB').collection('mycart')
-// const User =client.db('carDB').collection('user')
+const User =client.db('carDB').collection('user')
 
 
 
@@ -107,19 +107,19 @@ app.put('/cart/:id', async (req, res) => {
   const result = await brandcart.updateOne(filter, Cart);
   res.send(result);
 })
-// app.get('/user', async(req,res) =>{
-// const cursor =userColloction.find();
-// const users= await cursor.toArray();
-// res.send(users);
-// })
+app.get('/user', async(req,res) =>{
+const cursor =userColloction.find();
+const users= await cursor.toArray();
+res.send(users);
+})
 
 // user api
-// app.post('/user',async(req,res) => {
-//   const user =req.body ;
-//   console.log(user);
-//   const result = await userColloction.insertOne(user);
-//   res.send(result);
-// });
+app.post('/user',async(req,res) => {
+  const user =req.body ;
+  console.log(user);
+  const result = await userColloction.insertOne(user);
+  res.send(result);
+});
 app.post('/addcard', async (req, res) => {
   const card = req.body
   const result = await mycart.insertOne(card)
